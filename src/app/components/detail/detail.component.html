@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<img
+    src="https://image.tmdb.org/t/p/w500{{movieDetail.backdrop_path}}"
+    alt={{movieDetail.title}}
+    class="img-background"    
+    >
+
+<div class="container">            
+    
+    <div class="layout">
+        <h2>{{movieDetail.title}}</h2>        
+        <img src="https://image.tmdb.org/t/p/w500{{movieDetail.backdrop_path}}" alt={{movieDetail.title}} loading="lazy">
+    </div>        
+    <p class="movie-date">{{movieDetail.release_date | date}}</p>
+    <p class="movie-about">{{movieDetail.overview}}</p>
+
+    <div class="tags-container">                    
+        <div *ngFor="let genres of movieDetail.genres">
+            <p class="tags">{{genres.name}}</p>                    
+        </div>
+    </div>
+
+    <h4 class="title">Creditos</h4>
+
+    <div *ngIf="credits.length == 0">
+        <h3 class="error-text">Sin Info :(</h3>
+    </div>
+
+    <div class="card-slider">
+        <app-credits-card *ngFor="let credit of credits" [credit]="credit"></app-credits-card>    
+    </div>    
+z
+    <h4 class="title">Reviews</h4>
+
+    <div *ngIf="reviews.length == 0">
+        <h3 class="error-text">Sin reviews :(</h3>
+    </div>
+
+    <div class="reviews-container">
+        <app-reviews *ngFor="let review of reviews" [review]="review" class="reviews"></app-reviews>    
+    </div>
+    
+    <h4 class="title">Recomendaciones</h4>
+
+    <div *ngIf="movies.length == 0">
+        <h3 class="error-text">Sin recomendaciones :(</h3>
+    </div>
+
+    <div class="card-container"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()">
+        <app-card class="card" *ngFor="let movie of movies" [movie]="movie" (id)="getDetailMovie($event); getReviews($event); getRecommendations($event); getCredits($event)" (click)="scrollToTop()"></app-card>
+    </div>
+
+</div>

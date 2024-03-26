@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    
+    <app-slider></app-slider>
+ 
+    <h4 class="title">Populares</h4>        
+
+    <div class="card-container" 
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()">
+        <app-card *ngFor="let movie of movies" [movie]="movie"></app-card>
+    </div>
+
+</div>

@@ -1,0 +1,9 @@
+
+<div class="card-review">                
+    <div class="card-review-container">
+        <h3>{{review.author}}</h3>
+        <p>{{review.author_details.username}}</p>  
+    </div>  
+    <p>{{review.created_at | date}}</p>
+    <p [innerText]="review.content"></p>            
+</div>

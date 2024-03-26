@@ -1,0 +1,25 @@
+
+.card-review{
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;             
+    background-color: white;    
+    border-radius: 1rem;
+    padding: 1rem;        
+}
+
+.card-review p:last-child{
+    max-height: 150px;   
+    overflow-x: auto;
+}
+
+.card-review-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-review p:last-child{
+    margin: 1rem 0;
+}
